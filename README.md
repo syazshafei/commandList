@@ -1,10 +1,10 @@
-####PostgreSQL
+# PostgreSQL
 Connect to postgres user on postgreSQL
 ```
 psql -h localhost -U postgres
 ```
 
-####Anaconda Environment
+# Anaconda Environment
 Create environemnt
 ```
 conda create -n yourenvname python=x.x anaconda
@@ -14,17 +14,17 @@ Delete environment
 conda remove --name yourenvname --all
 ```
 
-####Superset Installation
+# Superset Installation
 
 Frontend Assets
 
 Install third-party dependencies listed in `package.json`:
 
 ```bash
-# From the root of the repository
+## From the root of the repository
 cd superset/assets
 
-# Install dependencies from `package-lock.json`
+## Install dependencies from `package-lock.json`
 npm ci
 ```
 
@@ -37,13 +37,13 @@ npm run build
 Alternatively you can use one of the following commands.
 
 ```bash
-# Start a watcher that recompiles your assets as you modify them (but have to manually reload your browser to see changes.)
+## Start a watcher that recompiles your assets as you modify them (but have to manually reload your browser to see changes.)
 npm run dev
 
-# Compile the Javascript and CSS in production/optimized mode for official releases
+## Compile the Javascript and CSS in production/optimized mode for official releases
 npm run prod
 
-# Copy a conf file from the frontend to the backend
+## Copy a conf file from the frontend to the backend
 npm run sync-backend
 ```
 
@@ -85,14 +85,14 @@ cd superset
 FLASK_ENV=development flask run --host=0.0.0.0 -p 8088 --with-threads --reload --debugger
 ```
 
-####Kill port on machine
+# Kill port on machine
 ```bash
 sudo netstat -nltp|grep LISTEN
 sudo netstat -nltp|grep :8080
 sudo kill -TERM xxxxx
 ```
 
-####Docker 
+# Docker 
 List docker container
 ```bash
 docker ps
@@ -110,7 +110,7 @@ Example:
 docker cp /home/mimos/2015.csv e76ae9f4fca8:/druid/druid-0.12.3/data
 ```
 
-####Druid
+# Druid
 Ingest data into Druid
 ```bash
 curl -X 'POST' -H 'Content-Type:application/json' -d @quickstart/tutorial/wikipedia-index.json http://localhost:8090/druid/indexer/v1/task
