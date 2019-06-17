@@ -85,6 +85,18 @@ cd superset
 FLASK_ENV=development flask run --host=0.0.0.0 -p 8088 --with-threads --reload --debugger
 ```
 
+# Superset docker
+## Initializing Database
+To initialize the database with a user and example charts, dashboards and datasets run:
+```bash
+SUPERSET_LOAD_EXAMPLES=yes docker-compose run --rm superset ./docker-init.sh
+```
+## Normal Operation
+To run the container, simply run:
+```bash
+docker-compose up
+```
+
 # Kill port on machine
 ```bash
 sudo netstat -nltp|grep LISTEN
@@ -92,7 +104,7 @@ sudo netstat -nltp|grep :8080
 sudo kill -TERM xxxxx
 ```
 
-# Docker 
+# Docker
 List docker container
 ```bash
 docker ps
