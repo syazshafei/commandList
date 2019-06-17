@@ -91,6 +91,11 @@ To initialize the database with a user and example charts, dashboards and datase
 ```bash
 SUPERSET_LOAD_EXAMPLES=yes docker-compose run --rm superset ./docker-init.sh
 ```
+or
+
+```bash
+docker-compose run --rm -e SUPERSET_LOAD_EXAMPLES=yes superset ./docker-init.sh
+```
 ## Normal Operation
 To run the container, simply run:
 ```bash
