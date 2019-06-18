@@ -89,7 +89,7 @@ FLASK_ENV=development flask run --host=0.0.0.0 -p 8088 --with-threads --reload -
 ## Initializing Database
 To initialize the database with a user and example charts, dashboards and datasets run:
 ```bash
-SUPERSET_LOAD_EXAMPLES=yes docker-compose -p projectname run --rm superset ./docker-init.sh
+SUPERSET_LOAD_EXAMPLES=yes docker-compose run --rm superset ./docker-init.sh
 ```
 or
 
