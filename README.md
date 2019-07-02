@@ -110,7 +110,7 @@ docker-compose run --rm -e SUPERSET_LOAD_EXAMPLES=yes superset ./docker-init.sh
 ## Normal Operation
 To run the container, simply run:
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 # Kill port on machine
@@ -136,6 +136,30 @@ docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
 
 Example:
 docker cp /home/mimos/2015.csv e76ae9f4fca8:/druid/druid-0.12.3/data
+```
+Export a container’s filesystem as a tar archive
+```
+docker export [OPTIONS] CONTAINER
+```
+Stop one or more running containers
+```
+docker stop [OPTIONS] CONTAINER [CONTAINER...]
+```
+Stop all containers
+```
+docker kill $(docker ps -q)
+```
+Remove all stopped containers
+```
+docker rm $(docker ps -a -q)
+```
+Remove docker image
+```
+docker rmi [IMAGE]
+```
+Remove all docker images
+```
+docker rmi $(docker images -q)
 ```
 
 # Druid
