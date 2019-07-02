@@ -180,3 +180,13 @@ Query
 ```
 curl -X 'POST' -H 'Content-Type:application/json' -d @query/detection-data-sql-minmaxdate.json http://localhost:8082/druid/v2/sql
 ```
+
+# SCP Linux
+Copy file from a remote host to local host SCP example
+```
+scp username@from_host:file.txt /local/directory/
+```
+Copy file from local host to a remote host SCP example:
+```
+scp file.txt username@to_host:/remote/directory/
+```
