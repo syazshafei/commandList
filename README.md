@@ -96,7 +96,7 @@ cd superset
 FLASK_ENV=development flask run --host=0.0.0.0 -p 8088 --with-threads --reload --debugger
 ```
 
-# Superset docker
+# Superset Docker
 ## Initializing Database
 To initialize the database with a user and example charts, dashboards and datasets run:
 ```
@@ -160,6 +160,14 @@ docker rmi [IMAGE]
 Remove all docker images
 ```
 docker rmi $(docker images -q)
+```
+Save one or more images to a tar archive (streamed to STDOUT by default)
+```
+docker save [OPTIONS] IMAGE [IMAGE...]
+```
+Load an image from a tar archive or STDIN
+```
+docker load [OPTIONS]
 ```
 
 # Druid
