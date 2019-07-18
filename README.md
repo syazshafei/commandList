@@ -25,7 +25,7 @@ Delete environment
 conda remove --name yourenvname --all
 ```
 
-# Create a virtual environemnt and activate it (recommended)
+# Create a virtual environemnt and activate it
 ```
 pip install virtualenv
 virtualenv -p python3 venv # setup a python3.6 virtualenv
