@@ -25,21 +25,12 @@ Delete environment
 conda remove --name yourenvname --all
 ```
 
-# Python virtualenv
-Create environment
+# Create a virtual environemnt and activate it (recommended)
 ```
-pip3 install virtualenv
+pip install virtualenv
+virtualenv -p python3 venv # setup a python3.6 virtualenv
+source venv/bin/activate
 ```
-Activate environment
-```
-python3 -m venv venv
-. venv/bin/activate
-```
-Python’s setup tools and pip
-```
-pip install --upgrade setuptools pip
-```
-
 
 # Superset Installation
 
