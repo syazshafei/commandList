@@ -27,6 +27,11 @@ conda remove --name yourenvname --all
 
 # Superset Installation
 
+OS dependencies
+```
+sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-pip libsasl2-dev libldap2-dev
+```
+
 Frontend Assets
 
 Install third-party dependencies listed in `package.json`:
