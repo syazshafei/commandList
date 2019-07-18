@@ -73,32 +73,32 @@ pip install virtualenv
 ```
 Then proceed with:
 ```
-# Create a virtual environemnt and activate it (recommended)
+<!-- # Create a virtual environemnt and activate it (recommended) -->
 virtualenv -p python3 venv # setup a python3.6 virtualenv
 source venv/bin/activate
 
-# Install external dependencies
+<!-- # Install external dependencies -->
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
 
-# Install Superset in editable (development) mode
+<!-- # Install Superset in editable (development) mode -->
 pip install -e .
 
-# Create an admin user in your metadata database
-flask fab create-admin
+<!-- # Create an admin user in your metadata database -->
+fabmanager create-admin --app superset
 
-# Initialize the database
+<!-- # Initialize the database -->
 superset db upgrade
 
-# Create default roles and permissions
+<!-- # Create default roles and permissions -->
 superset init
 
-# Load some data to play with
+<!-- # Load some data to play with -->
 superset load_examples
 
-# Start the Flask dev web server from inside your virtualenv.
+<!-- # Start the Flask dev web server from inside your virtualenv.
 # Note that your page may not have css at this point.
-# See instructions below how to build the front-end assets.
+# See instructions below how to build the front-end assets. -->
 FLASK_ENV=development superset run -p 8088 --with-threads --reload --debugger
 ```
 If you have made changes to the FAB-managed templates, which are not built the same way as the newer, React-powered front-end assets, you need to start the app without the `--with-threads` argument like so: `FLASK_ENV=development superset run -p 8088 --reload --debugger`
