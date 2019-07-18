@@ -36,37 +36,6 @@ For python3
 sudo apt-get install build-essential libssl-dev libffi-dev python3.6-dev python-pip libsasl2-dev libldap2-dev
 ```
 
-Frontend Assets
-
-Install third-party dependencies listed in `package.json`:
-
-```
-## From the root of the repository
-cd superset/assets
-
-## Install dependencies from `package-lock.json`
-npm ci
-```
-
-Build the Javascript bundles
-```
-npm run build
-```
-
-
-Alternatively you can use one of the following commands.
-
-```
-## Start a watcher that recompiles your assets as you modify them (but have to manually reload your browser to see changes.)
-npm run dev
-
-## Compile the Javascript and CSS in production/optimized mode for official releases
-npm run prod
-
-## Copy a conf file from the frontend to the backend
-npm run sync-backend
-```
-
 Developers should use a virtualenv.
 ```
 pip install virtualenv
@@ -111,6 +80,37 @@ gunicorn --bind  0.0.0.0:8088 \
         --limit-request-line 0 \
         --limit-request-field_size 0 \
         superset:app
+```
+
+Frontend Assets
+
+Install third-party dependencies listed in `package.json`:
+
+```
+## From the root of the repository
+cd superset/assets
+
+## Install dependencies from `package-lock.json`
+npm ci
+```
+
+Build the Javascript bundles
+```
+npm run build
+```
+
+
+Alternatively you can use one of the following commands.
+
+```
+## Start a watcher that recompiles your assets as you modify them (but have to manually reload your browser to see changes.)
+npm run dev
+
+## Compile the Javascript and CSS in production/optimized mode for official releases
+npm run prod
+
+## Copy a conf file from the frontend to the backend
+npm run sync-backend
 ```
 
 # Superset Docker
