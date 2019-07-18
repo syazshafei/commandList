@@ -103,6 +103,16 @@ FLASK_ENV=development superset run -p 8088 --with-threads --reload --debugger
 ```
 If you have made changes to the FAB-managed templates, which are not built the same way as the newer, React-powered front-end assets, you need to start the app without the `--with-threads` argument like so: `FLASK_ENV=development superset run -p 8088 --reload --debugger`
 
+Run superset with gunicorn for production
+```
+gunicorn --bind  0.0.0.0:8088 \
+   	--workers $((2 * $(getconf _NPROCESSORS_ONLN) + 1)) \
+        --timeout 60 \
+        --limit-request-line 0 \
+        --limit-request-field_size 0 \
+        superset:app
+```
+
 # Superset Docker
 ## Initializing Database
 To initialize the database with a user and example charts, dashboards and datasets run:
