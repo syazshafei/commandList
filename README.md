@@ -25,11 +25,31 @@ Delete environment
 conda remove --name yourenvname --all
 ```
 
+# Python virtualenv
+Create environment
+```
+pip3 install virtualenv
+```
+Activate environment
+```
+python3 -m venv venv
+. venv/bin/activate
+```
+Python’s setup tools and pip
+```
+pip install --upgrade setuptools pip
+```
+
+
 # Superset Installation
 
 OS dependencies
 ```
 sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-pip libsasl2-dev libldap2-dev
+```
+For python3
+```
+sudo apt-get install build-essential libssl-dev libffi-dev python3.6-dev python-pip libsasl2-dev libldap2-dev
 ```
 
 Frontend Assets
