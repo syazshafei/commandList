@@ -185,12 +185,12 @@ docker load [OPTIONS]
 # Druid
 Ingest data into Druid
 ```
-curl -X 'POST' -H 'Content-Type:application/json' -d @quickstart/tutorial/wikipedia-index.json http://localhost:8090/druid/indexer/v1/task
+curl -X 'POST' -H 'Content-Type:application/json' -d @quickstart/tutorial/wikipedia-index.json http://localhost:8081/druid/indexer/v1/task
 ```
 
 Query
 ```
-curl -X 'POST' -H 'Content-Type:application/json' -d @query/detection-data-sql-minmaxdate.json http://localhost:8082/druid/v2/sql
+curl -X 'POST' -H 'Content-Type:application/json' -d @quickstart/tutorial/wikipedia-top-pages-sql.json http://localhost:8888/druid/v2/sql
 ```
 
 # SCP Linux
