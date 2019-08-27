@@ -54,7 +54,7 @@ pip install -r requirements-dev.txt
 pip install -e .
 
 # Create an admin user in your metadata database
-fabmanager create-admin --app superset
+flask fab create-admin
 
 # Initialize the database
 superset db upgrade
@@ -117,17 +117,12 @@ npm run sync-backend
 ## Initializing Database
 To initialize the database with a user and example charts, dashboards and datasets run:
 ```
-SUPERSET_LOAD_EXAMPLES=yes docker-compose run --rm superset ./docker-init.sh
-```
-or
-
-```
-docker-compose run --rm -e SUPERSET_LOAD_EXAMPLES=yes superset ./docker-init.sh
+docker-compose run -e SUPERSET_LOAD_EXAMPLES=yes --rm superset ./docker-init.sh
 ```
 ## Normal Operation
 To run the container, simply run:
 ```
-docker-compose up -d
+docker-compose up
 ```
 
 # Kill port on machine
