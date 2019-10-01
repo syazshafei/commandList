@@ -175,11 +175,11 @@ docker rmi $(docker images -q)
 ```
 Save one or more images to a tar archive (streamed to STDOUT by default)
 ```
-docker save [OPTIONS] IMAGE [IMAGE...]
+docker save [IMAGE] > [PATH]
 ```
 Load an image from a tar archive or STDIN
 ```
-docker load [OPTIONS]
+docker load < [IMAGE_PATH]
 ```
 
 # Druid
