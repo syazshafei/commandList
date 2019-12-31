@@ -190,6 +190,10 @@ Load an image from a tar archive or STDIN
 ```
 docker load < [IMAGE_PATH]
 ```
+Display amount of disk space used by Docker:
+```
+docker system df -v
+```
 
 # Druid
 Ingest data into Druid
@@ -220,10 +224,6 @@ df -h
 List all & hidden file:
 ```
 ls -la
-```
-Display amount of disk space used by Docker:
-```
-docker system df -v
 ```
 Get size of all the directories
 ```
