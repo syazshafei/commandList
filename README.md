@@ -202,3 +202,25 @@ Copy file from local host to a remote host SCP example:
 ```
 scp file.txt username@to_host:/remote/directory/
 ```
+
+# Others
+Check local disk space:
+```
+df -h
+```
+List all & hidden file:
+```
+ls -la
+```
+Display amount of disk space used by Docker:
+```
+docker system df -v
+```
+Get size of all the directories
+```
+du -h --max-depth=1
+```
+Find file recusively
+```
+find -L . -name "historical*"
+```
