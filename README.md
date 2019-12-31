@@ -16,9 +16,13 @@ psql -h localhost -U postgres
 ```
 
 # Anaconda Environment
-Create environemnt
+Create environemnt (full package)
 ```
 conda create -n yourenvname python=x.x anaconda
+```
+Create environemnt (normal package)
+```
+conda create -n yourenvname python=x.x
 ```
 Delete environment
 ```
@@ -131,6 +135,11 @@ sudo netstat -nltp|grep LISTEN
 sudo netstat -nltp|grep :8080
 sudo kill -TERM xxxxx
 ```
+Other netstat command
+```
+sudo netstat -nputw
+sudo netstat -tulpn
+```
 
 # Docker
 List docker container
@@ -139,7 +148,7 @@ docker ps
 ```
 Run a command in a running container
 ```
-docker exec
+docker exec -ti <container> bash
 ```
 Copy files/folders between a container and the local filesystem
 ```
@@ -147,7 +156,7 @@ docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
 docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
 
 Example:
-docker cp /home/mimos/2015.csv e76ae9f4fca8:/druid/druid-0.12.3/data
+docker cp /home/syazwan/2015.csv e76ae9f4fca8:/druid/druid-0.12.3/data
 ```
 Export a container’s filesystem as a tar archive
 ```
