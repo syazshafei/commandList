@@ -194,6 +194,10 @@ Display amount of disk space used by Docker:
 ```
 docker system df -v
 ```
+Remove dangling images
+```
+sudo docker rmi $(sudo docker images | grep "^<none>" | awk '{print $3}')
+```
 
 # Druid
 Ingest data into Druid
