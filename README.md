@@ -128,6 +128,10 @@ To run the container, simply run:
 ```
 docker-compose up
 ```
+To re-build docker image
+```
+docker-compose up --build -d
+```
 
 # Kill port on machine
 ```
@@ -196,13 +200,21 @@ docker system df -v
 ```
 Remove dangling images
 ```
-sudo docker rmi $(sudo docker images | grep "^<none>" | awk '{print $3}')
+docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
+```
+Follow docker container log
+```
+sudo docker logs -f container
 ```
 
 # Druid
-Ingest data into Druid
+Ingest data into Druid (without console log)
 ```
 curl -X 'POST' -H 'Content-Type:application/json' -d @quickstart/tutorial/wikipedia-index.json http://localhost:8081/druid/indexer/v1/task
+```
+Ingest data into Druid (with console log)
+```
+bin/post-index-task --file quickstart/tutorial/wikipedia-index.json --url http://localhost:8081
 ```
 
 Query
@@ -220,7 +232,7 @@ Copy file from local host to a remote host SCP example:
 scp file.txt username@to_host:/remote/directory/
 ```
 
-# Others
+# Check storage
 Check local disk space:
 ```
 df -h
