@@ -206,6 +206,10 @@ Follow docker container log
 ```
 sudo docker logs -f container
 ```
+Show docker performance stats
+```
+sudo docker stats
+```
 
 # Druid
 Ingest data into Druid (without console log)
