@@ -204,12 +204,20 @@ docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
 ```
 Follow docker container log
 ```
-sudo docker logs -f container
+docker logs -f container
 ```
-Show docker performance stats
+docker performance stats
 ```
-sudo docker stats
+docker stats
 ```
+Check Docker container which is `exited`
+```
+docker ps -a -f status=exited
+```
+Remove Docker container which is `exited`
+```
+sudo docker rm $(sudo docker ps -a -f status=exited -q)
+``` 
 
 # Druid
 Ingest data into Druid (without console log)
