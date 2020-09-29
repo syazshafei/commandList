@@ -206,6 +206,10 @@ Follow docker container log
 ```
 docker logs -f container
 ```
+Follow docker compose logs
+```
+docker-compose logs -f
+```
 docker performance stats
 ```
 docker stats
