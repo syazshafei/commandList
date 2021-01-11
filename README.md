@@ -30,94 +30,6 @@ conda remove --name yourenvname --all
 ```
 
 # Superset Installation
-
-OS dependencies
-```
-sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-pip libsasl2-dev libldap2-dev
-```
-For python3
-```
-sudo apt-get install build-essential libssl-dev libffi-dev python3.6-dev python-pip libsasl2-dev libldap2-dev
-```
-
-Developers should use a virtualenv.
-```
-pip install virtualenv
-```
-Then proceed with:
-```
-# Create a virtual environemnt and activate it (recommended)
-virtualenv -p python3 venv # setup a python3.6 virtualenv
-source venv/bin/activate
-
-# Install external dependencies
-pip install -r requirements.txt
-pip install -r requirements-dev.txt
-
-# Install Superset in editable (development) mode
-pip install -e .
-
-# Create an admin user in your metadata database
-flask fab create-admin
-
-# Initialize the database
-superset db upgrade
-
-# Create default roles and permissions
-superset init
-
-# Load some data to play with
-superset load_examples
-
-# Start the Flask dev web server from inside your virtualenv.
-# Note that your page may not have css at this point.
-# See instructions below how to build the front-end assets.
-FLASK_ENV=development superset run -p 8088 --with-threads --reload --debugger
-```
-If you have made changes to the FAB-managed templates, which are not built the same way as the newer, React-powered front-end assets, you need to start the app without the `--with-threads` argument like so: `FLASK_ENV=development superset run -p 8088 --reload --debugger`
-
-Run superset with gunicorn for production
-```
-gunicorn --bind  0.0.0.0:8088 \
-   	--workers $((2 * $(getconf _NPROCESSORS_ONLN) + 1)) \
-        --timeout 60 \
-        --limit-request-line 0 \
-        --limit-request-field_size 0 \
-        superset:app
-```
-
-Frontend Assets
-
-Install third-party dependencies listed in `package.json`:
-
-```
-## From the root of the repository
-cd superset/assets
-
-## Install dependencies from `package-lock.json`
-npm ci
-```
-
-Build the Javascript bundles
-```
-npm run build
-```
-
-
-Alternatively you can use one of the following commands.
-
-```
-## Start a watcher that recompiles your assets as you modify them (but have to manually reload your browser to see changes.)
-npm run dev
-
-## Compile the Javascript and CSS in production/optimized mode for official releases
-npm run prod
-
-## Copy a conf file from the frontend to the backend
-npm run sync-backend
-```
-
-# Superset Docker
 ## Initializing Database
 To initialize the database with a user and example charts, dashboards and datasets run:
 ```
@@ -133,7 +45,7 @@ To re-build docker image
 docker-compose up --build -d
 ```
 
-# Kill port on machine
+# Kill port/service on machine
 ```
 sudo netstat -nltp|grep LISTEN
 sudo netstat -nltp|grep :8080
@@ -143,6 +55,10 @@ Other netstat command
 ```
 sudo netstat -nputw
 sudo netstat -tulpn
+```
+Example to kill java process
+```
+killall -9 java
 ```
 
 # Docker
@@ -198,7 +114,7 @@ Display amount of disk space used by Docker:
 ```
 docker system df -v
 ```
-Remove dangling images
+Remove all dangling images `<none>`
 ```
 docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
 ```
@@ -210,7 +126,7 @@ Follow docker compose logs
 ```
 docker-compose logs -f
 ```
-docker performance stats
+Check docker performance stats
 ```
 docker stats
 ```
@@ -220,7 +136,7 @@ docker ps -a -f status=exited
 ```
 Remove Docker container which is `exited`
 ```
-sudo docker rm $(sudo docker ps -a -f status=exited -q)
+docker rm $(sudo docker ps -a -f status=exited -q)
 ``` 
 
 # Druid
