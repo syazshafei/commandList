@@ -1,4 +1,6 @@
-# PostgreSQL
+# List of Useful Command
+
+## PostgreSQL
 Install postgresql
 ```
 sudo apt-get install postgresql postgresql-contrib
@@ -15,7 +17,20 @@ Connect to postgres user on postgreSQL
 psql -h localhost -U postgres
 ```
 
-# Anaconda Environment
+Import db
+```
+pg_dump -U USERNAME -h IP_ADDRESS -p 5432 DB_NAME > DB.sql
+```
+Restore db
+```
+psql -U USERNAME DB_NAME < DB.sql
+```
+Backup using docker
+```
+docker exec -t CONTAINER_NAME pg_dumpall -c -U USERNAME > dump_`date +%Y-%m-%d_%H%M%S`.sql
+```
+
+## Anaconda Environment
 Create environemnt (full package)
 ```
 conda create -n yourenvname python=x.x anaconda
@@ -29,13 +44,13 @@ Delete environment
 conda remove --name yourenvname --all
 ```
 
-# Superset Installation
-## Initializing Database
+## Superset Installation
+### Initializing Database
 To initialize the database with a user and example charts, dashboards and datasets run:
 ```
-docker-compose run -e SUPERSET_LOAD_EXAMPLES=yes --rm superset ./docker-init.sh
+docker-compose run -e SUPERSET_LOAD_EXAMPLES=no --rm superset ./docker-init.sh
 ```
-## Normal Operation
+### Normal Operation
 To run the container, simply run:
 ```
 docker-compose up
@@ -45,7 +60,7 @@ To re-build docker image
 docker-compose up --build -d
 ```
 
-# Kill port/service on machine
+## Kill port/service on machine
 ```
 sudo netstat -nltp|grep LISTEN
 sudo netstat -nltp|grep :8080
@@ -61,7 +76,7 @@ Example to kill java process
 killall -9 java
 ```
 
-# Docker
+## Docker
 List docker container
 ```
 docker ps
@@ -137,9 +152,9 @@ docker ps -a -f status=exited
 Remove Docker container which is `exited`
 ```
 docker rm $(sudo docker ps -a -f status=exited -q)
-``` 
+```
 
-# Druid
+## Druid
 Ingest data into Druid (without console log)
 ```
 curl -X 'POST' -H 'Content-Type:application/json' -d @quickstart/tutorial/wikipedia-index.json http://localhost:8081/druid/indexer/v1/task
@@ -154,7 +169,7 @@ Query
 curl -X 'POST' -H 'Content-Type:application/json' -d @quickstart/tutorial/wikipedia-top-pages-sql.json http://localhost:8888/druid/v2/sql
 ```
 
-# SCP Linux
+## SCP Linux
 Copy file from a remote host to local host SCP example
 ```
 scp username@from_host:file.txt /local/directory/
@@ -164,7 +179,7 @@ Copy file from local host to a remote host SCP example:
 scp file.txt username@to_host:/remote/directory/
 ```
 
-# Check storage
+## Check storage
 Check local disk space:
 ```
 df -h
@@ -180,4 +195,47 @@ du -h --max-depth=1
 Find file recusively
 ```
 find -L . -name "historical*"
+```
+
+## Vim Config
+```
+vim ~/.vimrc
+:set cursorline
+:set hlsearch
+:set incsearch
+:set ignorecase
+:set autoindent
+:syntax on
+```
+
+## Create SFTP Server
+```
+sudo groupadd sftp
+sudo nano /etc/ssh/sshd_config
+	#Subsystem sftp /usr/lib/openssh/sftp-server
+	Subsystem sftp internal-sftp
+	Match group sftp
+	ChrootDirectory %h
+	X11Forwarding no
+	AllowTcpForwarding no
+	ForceCommand internal-sftp
+sudo service ssh restart
+sudo useradd -m shared -g sftp -s /usr/sbin/nologin
+sudo passwd shared
+sudo chown root /home/shared
+sudo mkdir /home/shared/uploads
+sudo chown shared:sftp /home/shared/uploads
+```
+
+## Fix file limit warning on VSCode
+```
+sudo nano /etc/sysctl.conf
+fs.inotify.max_user_watches=524288
+sudo sysctl -p
+```
+
+## Sample working cronjob script
+```
+MAILTO=""
+0 0 * * 0 /home/admin/data_backup/db_backup.sh
 ```
