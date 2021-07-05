@@ -239,3 +239,25 @@ sudo sysctl -p
 MAILTO=""
 0 0 * * 0 /home/admin/data_backup/db_backup.sh
 ```
+
+## Cronjob to delete files older than 30 days
+```
+0 0 1 * * find /var/db_backup -name "*.tgz" -type f -mtime +30 -delete
+```
+
+## Logrotate configuration
+### Logrotate nginx log weekly and only keep the log for 1 year 
+```
+/var/log/nginx/*.log {
+    weekly
+    missingok
+    notifempty
+    rotate 52
+    compress
+    delaycompress
+}
+```
+### Check logrotate configuration
+```
+logrotate -d /etc/logrotate.d/nginx.conf
+```
