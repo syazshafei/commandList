@@ -1,5 +1,12 @@
 # List of Useful Command
 
+## Linux
+Add sudo user
+```
+sudo adduser admin
+sudo usermod -aG sudo admin
+```
+
 ## PostgreSQL
 Install postgresql
 ```
@@ -77,6 +84,22 @@ killall -9 java
 ```
 
 ## Docker
+Install Docker CE 19.03 on Ubuntu 18.04
+```
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce=5:19.03.13~3-0~ubuntu-bionic docker-ce-cli=5:19.03.13~3-0~ubuntu-bionic containerd.io=1.3.7-1
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+Add docker to admin group
+```
+sudo usermod -aG docker admin
+```
 List docker container
 ```
 docker ps
