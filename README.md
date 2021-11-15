@@ -215,6 +215,14 @@ Get size of all the directories
 ```
 du -h --max-depth=1
 ```
+Display biggest directories in the current working directory
+```
+du -hs * | sort -rh | head -5
+```
+Display the largest folders/files including the sub-directories
+```
+du -Sh | sort -rh | head -5
+```
 Find file recusively
 ```
 find -L . -name "historical*"
