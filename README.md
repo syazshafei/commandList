@@ -227,6 +227,10 @@ Find file recusively
 ```
 find -L . -name "historical*"
 ```
+Rename file extension for multiple files. Example: `.tar.gz` to `.tgz`
+```
+rename .tar.gz .tgz *.tar.gz
+```
 
 ## Vim Config
 ```
