@@ -30,6 +30,18 @@ Example to kill java process
 killall -9 java
 ```
 
+List down systemctl services
+
+```
+systemctl --type=service
+```
+
+Follow systemctl logs
+
+```
+journalctl -f -u service_name
+```
+
 Copy file from a remote host to local host SCP example
 
 ```
@@ -84,6 +96,18 @@ Find file recusively
 find -L . -name "historical*"
 ```
 
+Find file with `.tar.gz` extension in current directory and delete it
+
+```
+find . -name "*.tar.gz" -type f -delete
+```
+
+Find file with `.tar.gz` extension in current directory that older than 30 days and delete it
+
+```
+find . -name "*.tar.gz" -type f -mtime +30 -delete
+```
+
 Rename file extension for multiple files. Example: `.tar.gz` to `.tgz`
 
 ```
@@ -100,6 +124,13 @@ vim ~/.vimrc
 :set ignorecase
 :set autoindent
 :syntax on
+```
+
+Uninstall package
+
+```
+sudo apt list --installed
+sudo apt purge package_name
 ```
 
 ## Docker
