@@ -504,9 +504,8 @@ sudo apt purge openjdk-8*
 ```
 sudo wget https://nginx.org/keys/nginx_signing.key
 sudo apt-key add nginx_signing.key
-sudo nano /etc/apt/sources.list.d/nginx.list
-deb [arch=amd64] http://nginx.org/packages/mainline/ubuntu/ bionic nginx
-deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx
+sudo echo "deb [arch=amd64] http://nginx.org/packages/mainline/ubuntu/ bionic nginx" | sudo tee -a /etc/apt/sources.list.d/nginx.list
+sudo echo "deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx" | sudo tee -a /etc/apt/sources.list.d/nginx.list
 sudo apt remove nginx nginx-common nginx-full nginx-core
 sudo apt update
 sudo apt install nginx
